@@ -1,0 +1,17 @@
+config:
+  target: 'https://qymt2fhzx5.execute-api.eu-west-1.amazonaws.com/default'
+  phases:
+    - duration: 60
+      name: 'ramp phase'
+      arrivalRate: 10
+      rampTo: 50
+    - duration: 300
+      name: 'test phase'
+      arrivalRate: 50
+  defaults:
+    headers:
+      Content-Type: 'application/json'
+scenarios:
+  - flow:
+    - post:
+        url: "/sns-send"

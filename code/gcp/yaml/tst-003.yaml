@@ -1,0 +1,17 @@
+config:
+  target: 'https://europe-west1-arch-itqa.cloudfunctions.net'
+  phases:
+    - duration: 60
+      name: 'ramp phase'
+      arrivalRate: 20
+      rampTo: 100
+    - duration: 300
+      name: 'test phase'
+      arrivalRate: 100
+  defaults:
+    headers:
+      Content-Type: 'application/json'
+scenarios:
+  - flow:
+    - post:
+        url: "/gcp-send"
